@@ -6,8 +6,8 @@ public:
         int n=s.length();
         for(int i=n-1;i>=0;i--)
         {
-            // int temp=;
-            ans+=pow(26,cnt)*(s[i]-'A'+1);
+            int temp=pow(26,cnt);
+            ans+=temp*(s[i]-'A'+1);
             cnt++;
         }
         return ans;
