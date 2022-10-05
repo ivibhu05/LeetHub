@@ -3,19 +3,22 @@ class Solution
 public:
     vector<vector<int>> generate(int numRows) 
     {
-        vector<vector<int>> triangle;
-    for(int i=0; i<numRows; i++){
-        triangle.push_back(vector<int>());
-        for(int j=0; j <= i; j++){
-            if(j == 0)
-              triangle[i].push_back(1);
-            else if(j == i)
-              triangle[i].push_back(1);
-            else{
-                triangle[i].push_back(triangle[i-1][j-1] + triangle[i-1][j]);
+        vector<vector<int>> dp(numRows);
+        dp[0].push_back(1);
+        for(int i=1;i<numRows;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                if(j==i || j==0)
+                {
+                    dp[i].push_back(1);
+                }
+                else
+                {
+                    dp[i].push_back(dp[i-1][j-1]+dp[i-1][j]);
+                }
             }
         }
-    }
-    return triangle;
+        return dp;
     }
 };
